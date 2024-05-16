@@ -1,0 +1,39 @@
+{% extends 'dashboard.html' %} {% block content %}
+  <aside id="sidebar">
+      <div class="d-flex">
+          <button class="toggle-btn" type="button">
+              <i class="lni lni-grid-alt"></i>
+          </button>
+          <div class="sidebar-logo">
+              <a href="{% url 'dashboard' %}">Prediksi</a>
+          </div>
+      </div>
+      <ul class="sidebar-nav">
+          <li class="sidebar-item">
+              <a href="{% url 'dashboard' %}" class="sidebar-link">
+                <i class="lni lni-home"></i>
+                  <span>Dashboard</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="{% url 'prediksi' %}" class="sidebar-link">
+                <i class="lni lni-bar-chart"></i>
+                  <span>Prediksi</span>
+              </a>
+          </li>
+          
+          <li class="sidebar-item">
+              <a href="{% url 'customer_journey_mapping' %}" class="sidebar-link">
+                <i class="lni lni-map"></i>
+                  <span>Customer Journey Map</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="{% url 'analisa' %}" class="sidebar-link">
+                <i class="lni lni-keyword-research"></i>
+                  <span>Analisa</span>
+              </a>
+          </li>
+      </ul>
+  </aside>
+{% endblock %}

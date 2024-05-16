@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediksi</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/sidebar.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/prediksi/prediksi.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap-datepicker.min.css' %}" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"> -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/" />
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- dashboard.html -->
+
+    {% block content %}
+      <div class="prediksi">
+        <div class="row">
+          <div class="col-2">
+            {% include 'components/sidebar.html' %}
+          </div>
+          <div class="col-10 prediksi-field">
+            <div class="main p-3">
+              <div class="filter-tabel">
+                {% include 'components/prediksi_filter.html' %}
+              </div>
+              <div id="content" class="prediksi-tabel p-3">
+                {% include 'components/prediksi_table.html' %}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    {% endblock %}
+
+    <script src="{% static 'myapp/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'myapp/js/bootstrap-datepicker.min.js' %}"></script>
+  </body>
+</html>

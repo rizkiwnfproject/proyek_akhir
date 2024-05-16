@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Site</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'myapp/css/sidebar.css' %}" />
+  <link rel="stylesheet" href="{% static 'myapp/css/dashboard/dashboard.css' %}" />
+  <link rel="stylesheet" href="{% static 'myapp/css/dashboard/dashboard-card.css' %}" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/" />
+  <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- dashboard.html -->
+
+  {% block content %}
+  <div>
+    <div class="row">
+      <div class="col-2">
+        {% include 'components/sidebar.html' %}
+      </div>
+      <div class="col-10 pb-4">
+        <div class="main p-3">
+          <div id="content" class="bg-transparent">
+            {% include 'components/dashboard_card.html' %}
+          </div>
+          <div class="row" style="width: 1250px; padding:12px">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="card">
+                <div class="card-body">
+                  {% include 'components/dashboard_table.html' %}
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="">
+                <div class="d-flex flex-column">
+                  <div class="chart-one">
+                    {% include 'components/dashboard_chart_one.html' %}
+
+                  </div>
+                  <div class="chart-two" style="height: 200px;">
+
+                    {% include 'components/dashboard_chart_two.html' %}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    var barData_dashboard = {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [
+        {
+          label: 'Bar Chart',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }
+      ]
+    }
+
+    var doughnutData = {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [
+        {
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+          borderWidth: 1
+        }
+      ]
+    }
+
+    var barCtx = document.getElementById('barChart-dashboard').getContext('2d')
+    var barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: barData_dashboard
+    })
+
+    var doughnutCtx = document.getElementById('doughnutChart-dashboard').getContext('2d')
+    var doughnutChart = new Chart(doughnutCtx, {
+      type: 'doughnut',
+      data: doughnutData
+    })
+  </script>
+</body>
+
+</html>

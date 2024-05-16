@@ -1,0 +1,12 @@
+{% extends 'prediksi.html' %} {% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <div class="search-bar d-flex align-items-center gap-2">
+      <input type="email" class="form-control search" id="exampleFormControlInput1" placeholder="Tuliskan Nama">
+      <button class="btn btn-primary" type="submit">Cari</button>
+  </div>
+  <div class="filter-bar">
+    <input class="filter-tanggal" type="date">
+  </div>
+</div>
+
+{% endblock %}

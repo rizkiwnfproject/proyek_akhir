@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Journey Mapping</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/sidebar.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/cjm/cjm.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap-datepicker.min.css' %}" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"> -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/" />
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- dashboard.html -->
+
+    {% block content %}
+      <div class="cjm">
+        <div class="row">
+          <div class="col-2">
+            {% include 'components/sidebar.html' %}
+          </div>
+          <div class="col-10 cjm-field">
+            <div class="main p-3">
+              <div class="filter-tabel">
+                {% include 'components/cjm_filter.html' %}
+              </div>
+              <div id="content" class="cjm-tabel p-3">
+                {% include 'components/chart.html' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+
+    <script src="{% static 'myapp/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'myapp/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById('myChart')
+      
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Purple', 'Orange', 'Red', 'Blue', 'Yellow', 'Green'],
+          datasets: [
+            {
+              axis: 'y',
+              label: 'Customer Journey Mapping',
+              data: [5, 3, 3, 2, 5, 6, 7, 8],
+              borderWidth: 2,
+              fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.5
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
+      })
+    </script>
+  </body>
+</html>
